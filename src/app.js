@@ -1,6 +1,4 @@
 import React, { useState, useEffect } from "react";
-//useState для функционального компонента
-
 //import styles from "./styles.module.css";
 import "./styles.module.css";
 
@@ -22,46 +20,44 @@ function App() {
   );
 }
 
-class NeonCursor extends React.Component {
-  constructor(props) {
-    super(props);
+const NeonCursor = (props) => {
+  const [state, setState] = React.useState({ top: 0, left: 0 });
+  React.useEffect(() => {
+    const handleMouseMove = (e) => {
+      setState({
+        top: e.pageY,
+        left: e.pageX
+      });
+    };
+    const didMount = () => {
+      document.addEventListener("mousemove", handleMouseMove);
+      document.documentElement.classList.add("no-cursor");
+    };
+    const willUnmount = () => {
+      document.documentElement.classList.remove("no-cursor");
+      document.removeEventListener("mousemove", handleMouseMove);
+    };
+    didMount();
 
-    this.state = { top: 0, left: 0 };
-  }
+    return () => {
+      willUnmount();
+    };
+  }, [state]);
 
-  componentDidMount() {
-    document.addEventListener("mousemove", this.handleMouseMove);
-    document.documentElement.classList.add("no-cursor");
-  }
-
-  componentWillUnmount() {
-    document.documentElement.classList.remove("no-cursor");
-    document.removeEventListener("mousemove", this.handleMouseMove);
-  }
-
-  handleMouseMove = (e) => {
-    this.setState({
-      top: e.pageY,
-      left: e.pageX
-    });
-  };
-
-  render() {
-    return (
-      <img
-        alt=""
-        src="https://code.s3.yandex.net/web-code/react/cursor.svg"
-        width={30}
-        style={{
-          position: "absolute",
-          top: this.state.top,
-          left: this.state.left,
-          pointerEvents: "none"
-        }}
-      />
-    );
-  }
-}
+  return (
+    <img
+      alt=""
+      src="https://code.s3.yandex.net/web-code/react/cursor.svg"
+      width={30}
+      style={{
+        position: "absolute",
+        top: state.top,
+        left: state.left,
+        pointerEvents: "none"
+      }}
+    />
+  );
+};
 
 //ReactDOM.render(<App/>, document.querySelector('#root'));
 
