@@ -1,0 +1,112 @@
+body {
+  padding: 0;
+  margin: 0;
+}
+
+.off .button {
+  background: url("./images/switch_off.svg") center no-repeat;
+}
+
+.off .cat {
+  background: url("./images/cat_off.svg") center no-repeat;
+  background-size: contain;
+}
+
+.off .wall {
+  background: black;
+}
+
+.off .floor {
+  background: black;
+}
+
+.off .sideWall {
+  background: rgb(24, 23, 94);
+  border-right: 4px solid black;
+}
+
+.off .bubble {
+  display: none;
+}
+
+.on .button {
+  background: url("./images/switch_on.svg") center no-repeat;
+}
+
+.on .cat {
+  background: url("./images/cat_on.svg") center no-repeat;
+  background-size: contain;
+}
+
+.on .wall {
+  background: rgb(44, 42, 173);
+}
+
+.on .floor {
+  background: rgb(28, 26, 110);
+}
+
+.on .sideWall {
+  background: rgb(60, 57, 236);
+  border-right: 10px solid rgb(24, 23, 94);
+}
+
+.catWrap {
+  width: 75%;
+  height: 100%;
+  position: relative;
+}
+
+.cat {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.bubble {
+  width: 20%;
+  height: 15%;
+  background: url("./images/bubble.svg") center no-repeat;
+  background-size: contain;
+  position: absolute;
+  top: 10%;
+  right: 30%;
+}
+
+.sideWall {
+  width: 25%;
+  height: 100%;
+  position: relative;
+}
+
+.wall {
+  height: 40%;
+}
+
+.floor {
+  height: 60%;
+}
+
+.root {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.button {
+  width: 100px;
+  height: 100px;
+  position: absolute;
+  left: 50%;
+  top: 40%;
+  transform: translate(-50%, -50%);
+  border: 0;
+  cursor: pointer;
+  outline: none;
+}
